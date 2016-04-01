@@ -1,0 +1,43 @@
+{
+  "name": "__name__.js",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/__name__.js",
+  "jsnext:main": "es/__name__.js",
+  "scripts": {
+    "build": "rollup -c rollup.commonjs.config.js",
+    "serve": "browser-sync start --server --files '**/*.{html,js,json,css,jpg,png,gif,svg,woff}' --no-ui --no-open",
+    "prestart": "npm run build && npm run serve",
+    "start": "chokidar lib/__name__.js -c 'npm run build'",
+    "minify": "uglifyjs dist/__name__.js -o dist/__name__.min.js -cm --comments all",
+    "prepublish": "rollup -c rollup.es6.config.js",
+    "postpublish": "rm -rf es",
+    "test": "xo && ava -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/totora0155/__name__.js.git"
+  },
+  "keywords": [
+  ],
+  "author": "__username__",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/totora0155/__name__.js/issues"
+  },
+  "homepage": "https://github.com/totora0155/__name__.js#readme",
+  "devDependencies": {
+    "ava": "*",
+    "babel-preset-es2015-rollup": "*",
+    "browser-sync": "*",
+    "chokidar-cli": "*",
+    "rollup": "*",
+    "rollup-plugin-babel": "*",
+    "uglify-js": "*",
+    "xo": "*"
+  },
+  "xo": {
+    "esnext": true,
+    "space": 2
+  }
+}
